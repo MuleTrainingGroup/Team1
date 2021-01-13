@@ -16,17 +16,19 @@ traits:
   queryParams: !include traits/queryParams.raml
 
 
-/{transportType}/{transportCompany}/schedules:
-  get:
-    is: [queryParams,errorResponses]
-    displayName: Get schedules.
-    description: This is to reterive schedules information.
-    responses:
-      200:
-        body:
-          application/json:
-            type: scheduleDate
-            example: !include examples/schedules.raml
+/{transportType}:
+  /{transportCompany}:
+    /schedules:
+      get:
+        is: [queryParams,errorResponses]
+        displayName: Get schedules.
+        description: This is to reterive schedules information.
+        responses:
+          200:
+            body:
+              application/json:
+                type: scheduleDate
+                example: !include examples/schedules.raml
 
 
               

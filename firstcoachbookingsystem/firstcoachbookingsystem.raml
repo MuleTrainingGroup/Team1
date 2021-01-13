@@ -1,0 +1,39 @@
+#%RAML 1.0
+title: FirstCoachBookingSystem
+version: 1.0.0
+mediaType: 
+  - application/json
+protocols:
+  - HTTP
+  - HTTPS
+baseUri: www.example.com:8082/basepath
+
+types:
+  scheduleDate: !include dataTypes/scheduleData.raml
+  
+traits:
+  errorResponses: !include traits/errorResponses.raml
+  queryParams: !include traits/queryParams.raml
+
+
+/{transportType}/{transportCompany}/schedules:
+  get:
+    is: [queryParams,errorResponses]
+    displayName: Get schedules.
+    description: This is to reterive schedules information.
+    responses:
+      200:
+        body:
+          application/json:
+            type: scheduleDate
+            example: !include examples/schedules.raml
+
+
+              
+
+
+              
+            
+              
+
+
